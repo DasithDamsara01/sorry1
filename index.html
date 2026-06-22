@@ -3,76 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasith Damsara | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <title>I'm So Sorry...</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Hiding default cursor for custom effect */
+        }
+
+        body {
+            background: linear-gradient(135deg, #ffe5ec, #ffc2d1);
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Custom Heart Cursor */
+        #custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: #ff4d6d;
+            position: fixed;
+            transform: translate(-50%, -50%) rotate(45deg);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.05s ease;
+        }
+        #custom-cursor::before, #custom-cursor::after {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            position: absolute;
+        }
+        #custom-cursor::before { left: -10px; }
+        #custom-cursor::after { top: -10px; }
+
+        /* Main Card */
+        .container {
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            backdrop-filter: blur(10px);
+            max-width: 500px;
+            width: 90%;
+            z-index: 10;
+            border: 2px solid #fff;
+        }
+
+        .gif-container img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #ff758f;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: #ff4d6d;
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #4a4a4a;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 25px;
+            cursor: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        #yes-btn {
+            background: #ff4d6d;
+            color: white;
+        }
+
+        #yes-btn:hover {
+            background: #ff758f;
+            transform: scale(1.05);
+        }
+
+        #no-btn {
+            background: #6c757d;
+            color: white;
+            position: absolute;
+        }
+
+        /* Sparkle/Heart Trail */
+        .trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: #ffb3c1;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fadeOut 1s linear forwards;
+        }
+
+        @keyframes fadeOut {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+    </style>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
-    <nav>
-        <div class="logo">DASITH.</div>
-        <button id="theme-toggle" class="theme-btn">Dark Mode</button>
-    </nav>
+    <div id="custom-cursor"></div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="reveal-text">Dasith</h1>
-                <h1 class="reveal-text italic">Damsara.</h1>
-                <p class="fade-in">Graphic Designer & Illustrator based in Sri Lanka.</p>
-            </div>
-            <div class="scroll-indicator fade-in">Scroll Down</div>
-        </section>
+    <div class="container" id="main-box">
+        <div class="gif-container">
+            <img id="mood-gif" src="https://media.tenor.com/y2hM74NB3WgAAAAM/cute-cat.gif" alt="Sorry Bear">
+        </div>
+        <h1 id="heading">I'm So Sorry, Babe...</h1>
+        <p id="message">I never meant to hurt you. My world is empty without your smile. Can you please forgive me? ❤️</p>
+        
+        <div class="btn-group">
+            <button class="btn" id="yes-btn" onclick="forgiven()">Yes</button>
+            <button class="btn" id="no-btn" onmouseover="moveButton()">No</button>
+        </div>
+    </div>
 
-        <section class="about" id="about">
-            <div class="container">
-                <div class="about-flex">
-                    <div class="about-text">
-                        <h2 class="reveal-title">Bringing creative visions to life through design.</h2>
-                        <p>I am a passionate Graphic Designer qualified with NVQ Level 4 from VTA Gampola. I specialize in turning complex ideas into minimalist, intuitive, and timeless visual experiences.</p>
-                        <a href="#projects" class="link-btn">View My Skills</a>
-                    </div>
-                    <!-- මෙතනට ඔයාගේ photo එකක් දාන්න පුළුවන් (img folder එකක් ඇතුළට දාලා) -->
-                    <div class="about-image parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
-                </div>
-            </div>
-        </section>
+    <script>
+        const cursor = document.getElementById('custom-cursor');
+        const noBtn = document.getElementById('no-btn');
+        const yesBtn = document.getElementById('yes-btn');
+        const heading = document.getElementById('heading');
+        const message = document.getElementById('message');
+        const gif = document.getElementById('mood-gif');
 
-        <section class="projects" id="projects">
-            <div class="container">
-                <h2 class="section-title reveal-title">My Skills & Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">Illustration</div>
-                    <div class="skill-card">Layout Design</div>
-                    <div class="skill-card">Color Theory</div>
-                    <div class="skill-card">Photography</div>
-                    <div class="skill-card">Vector Graphics</div>
-                    <div class="skill-card">Print Design</div>
-                </div>
-            </div>
-        </section>
+        // 1. Custom Heart Cursor & Trail Effect
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
 
-        <footer class="contact">
-            <div class="container">
-                <h2 class="reveal-title">Let's build something beautiful together.</h2>
-                <a href="mailto:dasithdamsara01.gmail.com" class="email-link">dasithdamsara01@gmail.com</a>
-                <p style="margin-top: 20px; color: var(--text-muted);">Phone: 074 269 4722 / 074 237 1117</p>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 Dasith Damsara. All rights reserved.</p>
-                    <div class="socials">
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Behance</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-    </main>
+            // Create sparkle trail
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            document.body.appendChild(trail);
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+            setTimeout(() => {
+                trail.remove();
+            }, 1000);
+        });
+
+        // 2. Runaway "No" Button Function
+        function moveButton() {
+            // Calculate random positions within the screen bounds
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 50);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
+            
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // 3. When she clicks "Yes"
+        function forgiven() {
+            heading.innerText = "Yay! Thank You! 💖";
+            message.innerHTML = "You just made me the happiest person alive! I promise to love you more everyday. 💋";
+            gif.src = "https://media.tenor.com/gU_NfNs6_YcAAAAM/cute-love-bear-roses.gif"; // Changes to a happy love GIF
+            
+            // Hide the No button, center the Yes button
+            noBtn.style.display = 'none';
+            yesBtn.style.style = 'margin: 0 auto';
+            yesBtn.innerText = "I Love You!";
+        }
+    </script>
 </body>
 </html>
