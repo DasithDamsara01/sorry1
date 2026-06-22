@@ -3,76 +3,248 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dasith Damsara | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+    <title>For My Dearest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Afacad+Flux:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+        }
+
+        body {
+            background-color: #ffe5ec;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Afacad Flux', sans-serif;
+        }
+
+        .slide-container {
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #fff0f3 0%, #ffc2d1 100%);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 40px;
+            border: 6px solid #fff;
+            text-align: center;
+            margin: 20px;
+        }
+
+        #cursor {
+            position: fixed;
+            width: 25px;
+            height: 25px;
+            background: #ff4d6d;
+            transform: rotate(-45deg);
+            pointer-events: none;
+            z-index: 10000;
+        }
+        #cursor::before, #cursor::after {
+            content: '';
+            width: 25px;
+            height: 25px;
+            background: #ff4d6d;
+            border-radius: 50%;
+            position: absolute;
+        }
+        #cursor::before { top: -12px; left: 0; }
+        #cursor::after { left: 12px; top: 0; }
+
+        .trail {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 77, 109, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fade 1s linear forwards;
+        }
+
+        @keyframes fade {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        h1, h2 {
+            font-family: 'Comfortaa', cursive;
+            color: #590d22;
+            margin-bottom: 25px;
+            font-size: 2.5rem;
+        }
+
+        .content-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .image-wrapper {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 6px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 25px;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .btn {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            background-color: #ff4d6d;
+            color: #fff;
+            box-shadow: 0 8px 15px rgba(255, 77, 109, 0.3);
+            transition: all 0.2s ease;
+            min-width: 120px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            background-color: #ff758f;
+        }
+
+        #no-btn-1 {
+            background-color: #800f2f;
+        }
+        
+        #no-btn-2 {
+            background-color: #6c757d;
+        }
+
+        .bg-shape {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.2;
+        }
+
+        .hidden { display: none !important; }
+
+        .result-msg {
+            font-size: 2rem;
+            color: #590d22;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
+        }
+    </style>
 </head>
 <body>
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
 
-    <nav>
-        <div class="logo">DASITH.</div>
-        <button id="theme-toggle" class="theme-btn">Dark Mode</button>
-    </nav>
+    <div id="cursor"></div>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1 class="reveal-text">Dasith</h1>
-                <h1 class="reveal-text italic">Damsara.</h1>
-                <p class="fade-in">Graphic Designer & Illustrator based in Sri Lanka.</p>
+    <!-- PAGE 1 -->
+    <div class="slide-container" id="page1">
+        <i class="fa-solid fa-heart bg-shape" style="top:10%; left:10%; font-size: 60px; color:#ffb3c1;"></i>
+        <i class="fa-solid fa-heart bg-shape" style="bottom:15%; right:12%; font-size: 50px; color:#ffb3c1;"></i>
+
+        <div class="content-area">
+            <div class="image-wrapper">
+                <img src="https://media.tenor.com/y2hM74NB3WgAAAAM/cute-cat.gif" alt="Cute Sorry Cat">
             </div>
-            <div class="scroll-indicator fade-in">Scroll Down</div>
-        </section>
-
-        <section class="about" id="about">
-            <div class="container">
-                <div class="about-flex">
-                    <div class="about-text">
-                        <h2 class="reveal-title">Bringing creative visions to life through design.</h2>
-                        <p>I am a passionate Graphic Designer qualified with NVQ Level 4 from VTA Gampola. I specialize in turning complex ideas into minimalist, intuitive, and timeless visual experiences.</p>
-                        <a href="#projects" class="link-btn">View My Skills</a>
-                    </div>
-                    <!-- මෙතනට ඔයාගේ photo එකක් දාන්න පුළුවන් (img folder එකක් ඇතුළට දාලා) -->
-                    <div class="about-image parallax-bg" style="background-image: url('https://images.unsplash.com/photo-1513364776144-60967b0f800f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
-                </div>
+            <h1>Will you forgive me?</h1>
+            <div class="btn-group">
+                <button class="btn" id="yes-btn-1" onclick="goToPage2()">Yes</button>
+                <button class="btn" id="no-btn-1" onmouseover="changeNoToYes(this)">No</button>
             </div>
-        </section>
+        </div>
+    </div>
 
-        <section class="projects" id="projects">
-            <div class="container">
-                <h2 class="section-title reveal-title">My Skills & Expertise</h2>
-                <div class="skills-grid">
-                    <div class="skill-card">Illustration</div>
-                    <div class="skill-card">Layout Design</div>
-                    <div class="skill-card">Color Theory</div>
-                    <div class="skill-card">Photography</div>
-                    <div class="skill-card">Vector Graphics</div>
-                    <div class="skill-card">Print Design</div>
-                </div>
+    <!-- PAGE 2 -->
+    <div class="slide-container hidden" id="page2">
+        <div class="content-area">
+            <div class="image-wrapper">
+                <img src="https://media.tenor.com/gU_NfNs6_YcAAAAM/cute-love-bear-roses.gif" alt="Cute Bears">
             </div>
-        </section>
-
-        <footer class="contact">
-            <div class="container">
-                <h2 class="reveal-title">Let's build something beautiful together.</h2>
-                <a href="mailto:dasithdamsara01.gmail.com" class="email-link">dasithdamsara01@gmail.com</a>
-                <p style="margin-top: 20px; color: var(--text-muted);">Phone: 074 269 4722 / 074 237 1117</p>
-                <div class="footer-bottom">
-                    <p>&copy; 2026 Dasith Damsara. All rights reserved.</p>
-                    <div class="socials">
-                        <a href="#">LinkedIn</a>
-                        <a href="#">Instagram</a>
-                        <a href="#">Behance</a>
-                    </div>
-                </div>
+            <h2>You are only mine.</h2>
+            <div class="btn-group">
+                <button class="btn" onclick="showFinalResult('love')">Yes</button>
+                <button class="btn" id="no-btn-2" onclick="showFinalResult('hate')">No</button>
             </div>
-        </footer>
-    </main>
+        </div>
+    </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="script.js"></script>
+    <!-- FINAL PAGE -->
+    <div class="slide-container hidden" id="page-final">
+        <div class="content-area">
+            <div id="final-content" class="result-msg"></div>
+            <div class="btn-group" style="margin-top:30px;">
+                <button class="btn" onclick="location.reload()">Restart ❤️</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = e.clientX + 'px';
+            trail.style.top = e.clientY + 'px';
+            document.body.appendChild(trail);
+            setTimeout(() => trail.remove(), 600);
+        });
+
+        function changeNoToYes(btn) {
+            btn.innerText = "Yes";
+            btn.style.backgroundColor = "#ff4d6d";
+            btn.onclick = goToPage2;
+        }
+
+        function goToPage2() {
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.remove('hidden');
+        }
+
+        function showFinalResult(type) {
+            document.getElementById('page2').classList.add('hidden');
+            document.getElementById('page-final').classList.remove('hidden');
+            const finalContent = document.getElementById('final-content');
+
+            if (type === 'love') {
+                finalContent.innerHTML = "<i class='fa-solid fa-face-kiss-wink-heart' style='font-size:70px; color:#ff4d6d; margin-bottom:20px;'></i><br>I love you more! ❤️";
+            } else {
+                finalContent.innerHTML = "<i class='fa-solid fa-face-sad-tear' style='font-size:70px; color:#800f2f; margin-bottom:20px;'></i><br>You hate me... 🥺";
+            }
+        }
+    </script>
 </body>
 </html>
